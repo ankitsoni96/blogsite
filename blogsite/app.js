@@ -3,6 +3,8 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+var mongo = require('mongodb');
+const DatabaseHelper = require('./utils/databaseHelper');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
@@ -39,8 +41,7 @@ app.use(function(err, req, res, next) {
 });
 
 app.listen(3000,()=>{
-
-  
+  DatabaseHelper.connection();
 });
 
 module.exports = app;
